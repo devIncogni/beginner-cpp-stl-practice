@@ -2,12 +2,14 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "CMake Build",
+            "label": "CMake Configure",
             "type": "shell",
             "command": "cmake",
             "args": [
                 "-S", "${workspaceFolder}",
-                "-B", "${workspaceFolder}/build"
+                "-B", "${workspaceFolder}/build",
+                "-DCMAKE_BUILD_TYPE=Debug",
+                "-DCMAKE_RUNTIME_OUTPUT_DIRECTORY=${workspaceFolder}/bin"
             ],
             "group": "build"
         },
@@ -19,7 +21,7 @@
                 "--build", "${workspaceFolder}/build",
                 "--config", "Debug"
             ],
-            "dependsOn": "CMake Build",
+            "dependsOn": "CMake Configure",
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -27,5 +29,3 @@
         }
     ]
 }
-
-
