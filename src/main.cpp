@@ -113,6 +113,25 @@ void divisorsOf(int N) {
   std::cout << '\n';
 }
 
+void checkPrime(int N) {
+
+  int sqrtN{static_cast<int>(std::sqrt(N))};
+  int counter{};
+  for (int i{1}; i <= sqrtN; ++i) {
+    if (N % i == 0) {
+      ++counter;
+      if (i != N / i) {
+        ++counter;
+      }
+    }
+    if (counter > 2) {
+      std::cout << "Not Prime\n";
+      return;
+    }
+  }
+  std::cout << "Prime\n";
+}
+
 int main() {
   numberOfDigitsIn(54648);
   numberOfDigitsSmartlyIn(54648);
@@ -122,6 +141,7 @@ int main() {
   elegantGCD(5, 10);
   angstormNumber(153);
 
-  divisorsOf(36);
+  divisorsOf(19);
+  checkPrime(21);
   return 0;
 }
