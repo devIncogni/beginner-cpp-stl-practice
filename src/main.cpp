@@ -72,6 +72,24 @@ void elegantGCD(int x, int y) {
   }
 }
 
+void angstormNumber(int N) {
+  int copy{N};
+  int numberOfDigits{static_cast<int>(std::floor(std::log10(N) + 1))};
+  int sum{};
+
+  while (N > 0) {
+    int currentDigit{N % 10};
+    sum += std::pow(currentDigit, numberOfDigits);
+    N /= 10;
+  }
+
+  if (sum == copy) {
+    std::cout << "TRUE\n";
+  } else {
+    std::cout << "FALSE\n";
+  }
+}
+
 int main() {
   numberOfDigitsIn(54648);
   numberOfDigitsSmartlyIn(54648);
@@ -79,5 +97,6 @@ int main() {
 
   bruteForceGCD2(10, 5);
   elegantGCD(5, 10);
+  angstormNumber(153);
   return 0;
 }
