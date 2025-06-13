@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <cmath>
 #include <cstdlib>
 #include <iostream>
@@ -29,11 +30,54 @@ void reverseNumber(int N) {
   std::cout << sum << '\n';
 }
 
+void bruteForceGCD(int x, int y) {
+  int smallest{std::min(x, y)};
+  int gcd{1};
+  for (int i{2}; i <= smallest; ++i) {
+    if (x % i == 0 && y % i == 0) {
+      gcd = i;
+    }
+  }
+  std::cout << gcd << '\n';
+}
 
+void bruteForceGCD2(int x, int y) {
+  int smallest{std::min(x, y)};
+  int gcd{1};
+
+  if (std::max(x, y) % smallest == 0) {
+    gcd = smallest;
+    std::cout << gcd << '\n';
+    return;
+  }
+
+  for (int i{smallest / 2}; i >= 1; --i) {
+    if (x % i == 0 && y % i == 0) {
+      gcd = i;
+      std::cout << gcd << '\n';
+      return;
+    }
+  }
+  std::cout << gcd << '\n';
+}
+
+void elegantGCD(int x, int y) {
+  int smallest{std::min(x, y)};
+  int largest{std::max(x, y)};
+
+  if (x == 0 || y == 0) {
+    std::cout << largest << '\n';
+  } else {
+    elegantGCD(smallest, largest - smallest);
+  }
+}
 
 int main() {
   numberOfDigitsIn(54648);
   numberOfDigitsSmartlyIn(54648);
   reverseNumber(1200540);
+
+  bruteForceGCD2(10, 5);
+  elegantGCD(5, 10);
   return 0;
 }
