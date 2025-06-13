@@ -2,6 +2,7 @@
 #include <cmath>
 #include <cstdlib>
 #include <iostream>
+#include <vector>
 
 void numberOfDigitsIn(int N) {
 
@@ -90,6 +91,28 @@ void angstormNumber(int N) {
   }
 }
 
+void divisorsOf(int N) {
+  std::vector<int> divisors{};
+
+  int sqrtN{static_cast<int>(std::sqrt(N))};
+
+  for (int i{1}; i <= sqrtN; ++i) {
+
+    if (N % i == 0) {
+      divisors.push_back(i);
+      if (i != N / i) {
+        divisors.push_back(N / i);
+      }
+    }
+  }
+
+  std::sort(divisors.begin(), divisors.end());
+  for (int divisor : divisors) {
+    std::cout << divisor << " ";
+  }
+  std::cout << '\n';
+}
+
 int main() {
   numberOfDigitsIn(54648);
   numberOfDigitsSmartlyIn(54648);
@@ -98,5 +121,7 @@ int main() {
   bruteForceGCD2(10, 5);
   elegantGCD(5, 10);
   angstormNumber(153);
+
+  divisorsOf(36);
   return 0;
 }
