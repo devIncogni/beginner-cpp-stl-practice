@@ -1,7 +1,7 @@
-# C++ STL Pracice
+# C++ Basic Math Pracice
 
 ## Overview
-Practice basic C++ STL using Striver's A2Z DSA Sheet
+Practice basic math questions in C++ using Striver's A2Z DSA Sheet
 
 ## Features
 - **CMake Build System:** Supports multi-file projects and maintains build artifacts in a separate directory.
